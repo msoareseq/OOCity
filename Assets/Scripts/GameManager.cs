@@ -6,30 +6,34 @@ public class GameManager : MonoBehaviour
 {
     public string CityName
     {
-        get { return cityName; }
-        set { cityName = value; }
+        get { return _cityName; }
+        set { _cityName = value; }
     }
 
     public float CityCash
     {
-        get { return cityCash; }
+        get { return _cityCash; }
     }
     
     public int CityPopulation
     {
-        get { return cityPopulation; }
+        get { return _cityPopulation; }
     }
 
-    public List<GameObject> CityBuildings = new List<GameObject>();
+    private List<GameObject> _cityBuildings = new List<GameObject>();
 
-    private string cityName;
-    private float cityCash;
-    private int cityPopulation;
-    private int simulationDay;
+    private string _cityName;
+    private float _cityCash;
+    private int _cityPopulation;
+    private int _simulationDay;
 
     void Start()
     {
         Application.targetFrameRate = 60;
+        _cityCash = 10000;
+        _cityBuildings.AddRange(GameObject.FindGameObjectsWithTag("Building"));
+
+        InvokeRepeating(nameof(CountPopulation), 1f, 30f);
     }
 
     // Update is called once per frame
@@ -40,10 +44,16 @@ public class GameManager : MonoBehaviour
 
     void CountPopulation()
     {
-        cityPopulation = 0;
-        foreach (GameObject building in CityBuildings)
+        _cityPopulation = 0;
+        foreach (GameObject building in _cityBuildings)
         {
+            _cityPopulation += building.GetComponent<Building>().Citizens;
         }
+    }
+
+    public void AddCash(float ammount)
+    {
+        _cityCash += ammount;
     }
 
 }
