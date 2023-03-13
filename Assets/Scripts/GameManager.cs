@@ -20,12 +20,19 @@ public class GameManager : MonoBehaviour
         get { return _cityPopulation; }
     }
 
+    public GameObject ActiveBuilding { get => _activeBuilding; }
+
     private List<GameObject> _cityBuildings = new List<GameObject>();
 
     private string _cityName;
     private float _cityCash;
     private int _cityPopulation;
     private int _simulationDay;
+
+    [SerializeField]
+    private UIHandler _uiHandler;
+
+    private GameObject _activeBuilding;
 
     void Start()
     {
@@ -39,7 +46,26 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetMouseButtonDown(0))
+        {
+            // select an object using raycast
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit))
+            {
+                if (hit.transform.gameObject.tag == "Building")
+                {
+                    _activeBuilding = hit.transform.gameObject;
+                    Debug.Log(_activeBuilding.name);
+                }
+                else
+                {
+                    _activeBuilding = null;
+                    Debug.Log("None");
+                }
+            }
+            _uiHandler.UpdateUI();
+        }
     }
 
     void CountPopulation()

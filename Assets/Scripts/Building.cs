@@ -25,13 +25,14 @@ public abstract class Building : MonoBehaviour
     }
 
     public int Citizens { get => citizens; }
+    public BuildingType TypeOfBuilding { get => typeOfBuilding; set => typeOfBuilding = value; }
 
     protected string buildingName;
     protected int numberOfFloors;
     protected float taxRate;
     protected int citizens;
-    protected BuildingType _typeOfBuilding;
-    
+    private BuildingType typeOfBuilding;
+
 
     void Start()
     {
@@ -44,6 +45,22 @@ public abstract class Building : MonoBehaviour
 
     }
 
+    void GenerateBuildingName()
+    {
+        switch (typeOfBuilding)
+        {
+            case BuildingType.Residential:
+                buildingName = "Residential Building";
+                break;
+            case BuildingType.Office:
+                buildingName = "Office Building";
+                break;
+            case BuildingType.Commercial:
+                buildingName = "Commercial Building";
+                break;
+        }
+    }
+
     void Update()
     {
         
@@ -54,7 +71,7 @@ public abstract class Building : MonoBehaviour
 
     protected void CalculateTaxRate() 
     { 
-        switch (_typeOfBuilding)
+        switch (typeOfBuilding)
         {
             case BuildingType.Residential:
                 taxRate = 0.01f;
