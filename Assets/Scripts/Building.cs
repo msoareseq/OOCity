@@ -25,13 +25,14 @@ public abstract class Building : MonoBehaviour
     }
 
     public int Citizens { get => citizens; }
+    public BuildingType TypeOfBuilding { get => typeOfBuilding; set => typeOfBuilding = value; }
 
     protected string buildingName;
     protected int numberOfFloors;
     protected float taxRate;
     protected int citizens;
-    protected BuildingType typeOfBuilding;
-    
+    private BuildingType typeOfBuilding;
+
 
     void Start()
     {
