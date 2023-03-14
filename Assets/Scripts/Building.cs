@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[Serializable]
 public abstract class Building : MonoBehaviour
 {
     protected GameManager gameManager;
@@ -31,13 +33,13 @@ public abstract class Building : MonoBehaviour
     protected int numberOfFloors;
     protected float taxRate;
     protected int citizens;
-    private BuildingType typeOfBuilding;
+    protected BuildingType typeOfBuilding;
 
 
     void Start()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        citizens = Random.Range(0, 2);
+        //citizens = UnityEngine.Random.Range(0, 2);
 
         CalculateTaxRate();
 

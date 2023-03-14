@@ -64,6 +64,11 @@ public class GameManager : MonoBehaviour
                     Debug.Log("None");
                 }
             }
+            else
+            { 
+                _activeBuilding = null;
+                Debug.Log("None"); 
+            }
             _uiHandler.UpdateUI();
         }
     }
