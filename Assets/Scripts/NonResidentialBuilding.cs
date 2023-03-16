@@ -21,7 +21,7 @@ public class NonResidentialBuilding : Building
     {
         citizens = Random.Range(0, 20);
     }
-
+    // POLYMORPHISM
     protected override void PayTaxes()
     {
         gameManager.AddCash(citizens * taxRate * 10);

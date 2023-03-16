@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ResidentialBuilding : Building
+public class ResidentialBuilding : Building // INHERITANCE
 {
     public string initialBuildingName;
     public int initialNumberOfFloors;

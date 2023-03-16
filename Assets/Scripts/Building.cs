@@ -9,7 +9,7 @@ public abstract class Building : MonoBehaviour
     protected GameManager gameManager;
     public enum BuildingType { Residential, Office, Commercial };
 
-    public string BuildingName
+    public string BuildingName //ENCAPSULATION
     {
         get { return buildingName; }
         set { buildingName = value; }
@@ -67,7 +67,7 @@ public abstract class Building : MonoBehaviour
     {
         
     }
-
+    // ABSTRACTION
     protected abstract void PayTaxes();
     protected abstract void DoAction();
 

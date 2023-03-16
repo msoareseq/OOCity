@@ -72,7 +72,7 @@ public class GameManager : MonoBehaviour
             _uiHandler.UpdateUI();
         }
     }
-
+    // ABSTRACTION
     void CountPopulation()
     {
         _cityPopulation = 0;
